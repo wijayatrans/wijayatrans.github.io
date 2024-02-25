@@ -270,6 +270,71 @@ jQuery(function ($) {
     }
     mediaPopup();
 
+    // Append layanan kami data
+    function appendLayananKamiData() {
+      const data = [
+        {
+          title: 'Travel (Malang Surabaya)',
+          icon: 'images/icon-image/fact4.png',
+          keterangan: [
+            'Kami menyediakan Travel (Malang Surabaya)',
+            'Harga Rp. 150.000 sudah include toll',
+            'Carter drop Malang Juanda Rp. 500.000 sudah include all in'
+          ]
+        },
+        {
+          title: 'Travel (Surabaya Malang)',
+          icon: 'images/icon-image/fact4.png',
+          keterangan: [
+            'Kami menyediakan Travel (Surabaya Malang)',
+            'Harga Rp. 150.000 sudah include toll',
+            'Carter drop Malang Juanda Rp. 500.000 sudah include all in'
+          ]
+        },
+        {
+          title: 'Sewa Mobil + Driver',
+          icon: 'images/icon-image/fact4.png',
+          keterangan: ['Kami menyediakan fasilitas Sewa Mobil + Driver']
+        }
+      ];
+
+      for (let index = 0; index < data.length; index++) {
+        $('#layanan-kami').append(`
+          <div class="col-lg-6 mt-lg-0 mb-lg-0 mt-sm-0 mb-sm-0" mt-xs-0 mb-xs-0>
+            <div class="ts-service-box d-flex">
+              <div class="ts-service-box-img">
+                <img
+                  loading="lazy"
+                  src="${data[index].icon}"
+                  alt="service-icon"
+                  style="width:45px;height:45px"
+                />
+              </div>
+              <div class="ts-service-box-info">
+                <h3 class="service-box-title">
+                  <a href="#">${data[index].title}</a>
+                </h3>
+                ${data[index].keterangan
+                  .map(
+                    item => `
+                    <a class="link">
+                      <div class="text-left" style="display: flex;">
+                        <a style="margin-right:10px">✓</a>
+                        <a style="word-break: keep-all">${item}</a>
+                      </div>
+                    </a>
+                  `
+                  )
+                  .join('')}
+              </div>
+            </div>
+            <!-- Service 3 end -->
+          </div>
+        `);
+      }
+    }
+    appendLayananKamiData();
+
     // Append armada data
     function appendArmadaData() {
       const contact =
@@ -360,7 +425,7 @@ jQuery(function ($) {
             brandName: 'Bus (Big / Medium)',
             factoryName: ''
           },
-          price: '-',
+          price: 'Hubungi kami',
           contact,
           keterangan
         }
@@ -368,53 +433,45 @@ jQuery(function ($) {
 
       for (let index = 0; index < data.length; index++) {
         $('#armada-kami').append(`
-        <div class="col-lg-4 col-md-6 mb-4" style="margin-top:20px">
-          <div class="latest-post">
-            <div class="latest-post-media">
-              <a href="#" class="latest-post-img">
-                <img
-                  loading="lazy"
-                  class="img-fluid"
-                  src="${data[index].image}"
-                  alt="img"
-                />
-              </a>
-            </div>
-            <div class="post-body">
-              <h4 class="post-title">
-                <a href="#" class="d-inline-block">${
-                  data[index].carType.brandName
-                }</a>
-              </h4>
-              <div style="margin-top: 10px;">
-              ${data[index].keterangan
-                .map(item => `<a class="d-inline-block">• ${item}</a>`)
-                .join('')}
-              </div>
-              <div style="margin-top: 15px">
-                <div class="container">
-                  <div class="row" style="height:45px;justify-content:space-between">
-                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6" style="display:flex;align-items: center;">
-                      <button type="button" class="btn btn-outline-primary disabled" style="background-color:transparent;">
-                        <a class="text-center" style="font-weight:bold">
-                          ${data[index].price}
-                        </a>
-                      </button>
-                    </div>
-                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6" style="display:flex;align-items: center;">
-                      <button id="hubungi-kami" type="button" class="btn btn-primary" style="background-color:#7800ff;">
-                        <a class="text-center">
-                          Hubungi Kami
-                        </a>
-                      </button>
-                    </div>
-                  </div>
+          <div class="col" style="margin-bottom: 50px">
+            <div class="card">
+              <img
+                loading="lazy"
+                src="${data[index].image}"
+                alt="img"
+                class="card-img-top"
+                style="width: auto"
+              />
+              <div class="card-body">
+                <h4 class="card-title">${data[index].carType.brandName}</h4>
+                <p class="card-text" style="margin-top: -5px">
+                ${data[index].keterangan
+                  .map(
+                    item => `
+                    <a class="link">
+                      <div class="text-left" style="display: flex;">
+                        <a style="margin-right:10px">✓</a>
+                        <a style="word-break: keep-all">${item}</a>
+                      </div>
+                    </a>
+                  `
+                  )
+                  .join('')}
+                </p>
+                <div style="border: 1px solid #f2f2f2">
+                </div>
+                <div style="margin-top: 10px">
+                  <a>Harga Mulai</a>
+                  <br />
+                  <a style="font-size: 20px; font-weight: bold"
+                    >${data[index].price}
+                  </a>
                 </div>
               </div>
+              <a id="hubungi-kami" class="btn btn-primary">Hubungi Kami</a>
             </div>
           </div>
-        </div>
-    `);
+        `);
       }
     }
     appendArmadaData();
