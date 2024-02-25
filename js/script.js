@@ -277,8 +277,8 @@ jQuery(function ($) {
 
       const keterangan = [
         'Sudah termasuk Mobil + Driver',
-        'Tidak Termasuk BBM, Tol, Parkir, Makan Supir',
-        'Pelayanan 12 jam (Harga hanya berlaku di area Malang kota)',
+        'Tidak Termasuk Tol, Parkir, Makan Supir',
+        'Pelayanan mulai jam 07.00 - 22.00',
         'Batu untuk luar kota ada tambahan biaya (Over Area)',
         'Harga tidak berlaku pada high season'
       ];
@@ -332,7 +332,7 @@ jQuery(function ($) {
           },
           price: 'Rp.1.150.000,-',
           contact,
-          keterangan
+          keterangan: [...keterangan, 'Sudah termasuk bbm']
         },
         {
           image: 'images/armada/ELF-WT.png',
@@ -342,7 +342,7 @@ jQuery(function ($) {
           },
           price: 'Rp.1.250.000,-',
           contact,
-          keterangan
+          keterangan: [...keterangan, 'Sudah termasuk bbm']
         },
         {
           image: 'images/armada/Hiace-Premio.png',
@@ -352,7 +352,7 @@ jQuery(function ($) {
           },
           price: 'Rp.1.250.000,-',
           contact,
-          keterangan
+          keterangan: [...keterangan, 'Sudah termasuk bbm']
         },
         {
           image: 'images/armada/Bus-WT.png',
@@ -367,37 +367,62 @@ jQuery(function ($) {
       ];
 
       for (let index = 0; index < data.length; index++) {
-        $('#armada-kami').append(`<div class="col-lg-4 col-md-6 mb-4">
-		  <div class="latest-post">
-			<div class="latest-post-media">
-			  <a href="#" class="latest-post-img">
-				<img
-				  loading="lazy"
-				  class="img-fluid"
-				  src="${data[index].image}"
-				  alt="img"
-				/>
-			  </a>
-			</div>
-			<div class="post-body">
-			  <h4 class="post-title">
-				<a href="#" class="d-inline-block">${data[index].carType.brandName}</a>
-			  </h4>
-			  <div style="margin-top: 10px;">
-				${keterangan.map(item => `<a class="d-inline-block">• ${item}</a>`).join('')}
-			  </div>
-			  <div style="margin-top: 10px">
-				<div class="latest-post-meta">
-					<span class="post-item-date">
-						<i class="fa fa-clock-o"></i>${data[index].price}
-					</span>
-				</div>
-			  </div>
-			</div>
-		  </div>
-		</div>`);
+        $('#armada-kami').append(`
+        <div class="col-lg-4 col-md-6 mb-4" style="margin-top:20px">
+          <div class="latest-post">
+            <div class="latest-post-media">
+              <a href="#" class="latest-post-img">
+                <img
+                  loading="lazy"
+                  class="img-fluid"
+                  src="${data[index].image}"
+                  alt="img"
+                />
+              </a>
+            </div>
+            <div class="post-body">
+              <h4 class="post-title">
+                <a href="#" class="d-inline-block">${
+                  data[index].carType.brandName
+                }</a>
+              </h4>
+              <div style="margin-top: 10px;">
+              ${data[index].keterangan
+                .map(item => `<a class="d-inline-block">• ${item}</a>`)
+                .join('')}
+              </div>
+              <div style="margin-top: 15px">
+                <div class="container">
+                  <div class="row" style="height:45px;justify-content:space-between">
+                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6" style="display:flex;align-items: center;">
+                      <button type="button" class="btn btn-outline-primary disabled" style="background-color:transparent;">
+                        <a class="text-center" style="font-weight:bold">
+                          ${data[index].price}
+                        </a>
+                      </button>
+                    </div>
+                    <div class="col col-lg-6 col-md-6 col-sm-6 col-xs-6" style="display:flex;align-items: center;">
+                      <button id="hubungi-kami" type="button" class="btn btn-primary" style="background-color:#7800ff;">
+                        <a class="text-center">
+                          Hubungi Kami
+                        </a>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    `);
       }
     }
     appendArmadaData();
+  });
+
+  $(document).on('click', '#hubungi-kami', function () {
+    window.open(
+      'https://api.whatsapp.com/send/?phone=6281331402031&text=Halo+Wijaya+Trans&type=phone_number&app_absent=0'
+    );
   });
 });
