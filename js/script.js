@@ -480,7 +480,7 @@ jQuery(function ($) {
   });
 
   $(document).on('click', '#telepon-kami', function () {
-    window.open('tel:+081331402031');
+    window.open('tel:081331402031');
   });
 
   $(document).on('click', '#whatsapp-kami', function () {
