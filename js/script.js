@@ -347,6 +347,8 @@ jQuery(function ($) {
         'Batu untuk luar kota ada tambahan biaya (Over Area)',
         'Harga tidak berlaku pada high season'
       ];
+      const keteranganSudahTermasukBBM = 'Sudah termasuk BBM';
+      const keteranganTidakTermasukBBM = 'Tidak termasuk BBM';
 
       let data = [
         {
@@ -357,7 +359,7 @@ jQuery(function ($) {
           },
           price: 'Rp.400.000,-',
           contact,
-          keterangan
+          keterangan: [...keterangan, keteranganTidakTermasukBBM]
         },
         {
           image: 'images/armada/New-Avanza-WT.png',
@@ -367,7 +369,7 @@ jQuery(function ($) {
           },
           price: 'Rp.450.000,-',
           contact,
-          keterangan
+          keterangan: [...keterangan, keteranganTidakTermasukBBM]
         },
         {
           image: 'images/armada/Xpander-WT.png',
@@ -377,7 +379,7 @@ jQuery(function ($) {
           },
           price: 'Rp.450.000,-',
           contact,
-          keterangan
+          keterangan: [...keterangan, keteranganTidakTermasukBBM]
         },
         {
           image: 'images/armada/Innova-Reborn-WT.png',
@@ -387,7 +389,7 @@ jQuery(function ($) {
           },
           price: 'Rp.600.000,-',
           contact,
-          keterangan
+          keterangan: [...keterangan, keteranganTidakTermasukBBM]
         },
         {
           image: 'images/armada/Hiace-Commuter-WT.png',
@@ -397,7 +399,7 @@ jQuery(function ($) {
           },
           price: 'Rp.1.150.000,-',
           contact,
-          keterangan: [...keterangan, 'Sudah termasuk bbm']
+          keterangan: [...keterangan, keteranganSudahTermasukBBM]
         },
         {
           image: 'images/armada/ELF-WT.png',
@@ -407,7 +409,7 @@ jQuery(function ($) {
           },
           price: 'Rp.1.250.000,-',
           contact,
-          keterangan: [...keterangan, 'Sudah termasuk bbm']
+          keterangan: [...keterangan, keteranganSudahTermasukBBM]
         },
         {
           image: 'images/armada/Hiace-Premio.png',
@@ -417,7 +419,7 @@ jQuery(function ($) {
           },
           price: 'Rp.1.250.000,-',
           contact,
-          keterangan: [...keterangan, 'Sudah termasuk bbm']
+          keterangan: [...keterangan, keteranganSudahTermasukBBM]
         },
         {
           image: 'images/armada/Bus-WT.png',
@@ -477,7 +479,11 @@ jQuery(function ($) {
     appendArmadaData();
   });
 
-  $(document).on('click', '#hubungi-kami', function () {
+  $(document).on('click', '#telepon-kami', function () {
+    window.open('tel:+081331402031');
+  });
+
+  $(document).on('click', '#whatsapp-kami', function () {
     window.open(
       'https://api.whatsapp.com/send/?phone=6281331402031&text=Halo+Wijaya+Trans&type=phone_number&app_absent=0'
     );
