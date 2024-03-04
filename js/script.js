@@ -470,7 +470,7 @@ jQuery(function ($) {
                   </a>
                 </div>
               </div>
-              <a id="hubungi-kami" class="btn btn-primary">Hubungi Kami</a>
+              <a id="whatsapp-kami" class="btn btn-primary">Hubungi Kami</a>
             </div>
           </div>
         `);
