@@ -477,6 +477,9 @@ jQuery(function ($) {
       }
     }
     appendArmadaData();
+
+    function appendTripPackagesData() {}
+    appendTripPackagesData();
   });
 
   $(document).on('click', '#telepon-kami', function () {
