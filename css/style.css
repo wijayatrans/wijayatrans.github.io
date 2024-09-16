@@ -2635,6 +2635,7 @@ img.testimonial-thumb {
   text-transform: uppercase;
   font-size: 58px;
   font-weight: 900;
+  line-height: 70px;
 }
 
 @media (max-width: 767px) {

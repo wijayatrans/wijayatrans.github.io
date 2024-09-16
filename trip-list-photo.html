@@ -110,7 +110,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="banner-heading">
-                  <h1 class="banner-title">Paket Trip</h1>
+                  <h1 id="tripTitle" class="banner-title"></h1>
                 </div>
               </div>
               <!-- Col end -->
@@ -127,7 +127,9 @@
         <div class="container">
           <div class="row text-center">
             <div class="col-12">
-              <h2 class="section-title">Anda dapat memilih paket trip</h2>
+              <h2 class="section-title">
+                Kami telah menyediakan detail paket trip
+              </h2>
               <h3 class="section-sub-title">Berikut</h3>
             </div>
           </div>
@@ -326,7 +328,9 @@
 
         console.log(parsed);
 
-        const { parentDirectory, totalPhotos } = parsed;
+        const { parentDirectory, title, totalPhotos } = parsed;
+
+        $('#tripTitle').text(title);
 
         for (let index = 0; index < totalPhotos; index++) {
           console.log('qweqw', `${parentDirectory}/${index + 1}.jpg`);

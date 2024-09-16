@@ -110,7 +110,7 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="banner-heading">
-                  <h1 class="banner-title">Paket Trip</h1>
+                  <h1 id="tripTitle" class="banner-title"></h1>
                 </div>
               </div>
               <!-- Col end -->
@@ -127,7 +127,7 @@
         <div class="container">
           <div class="row text-center">
             <div class="col-12">
-              <h2 class="section-title">Anda dapat memilih paket trip</h2>
+              <h2 id="tripTitleSub" class="section-title"></h2>
               <h3 class="section-sub-title">Berikut</h3>
             </div>
           </div>
@@ -326,6 +326,11 @@
 
         console.log(parsed);
 
+        const { title: tripTitle } = parsed;
+
+        $('#tripTitle').text(`Paket ${tripTitle}`);
+        $('#tripTitleSub').text(`ANDA DAPAT MEMILIH PAKET ${tripTitle}`);
+
         for (let index = 0; index < parsed.subTrip.length; index++) {
           const { title, folderName, photos } = parsed.subTrip[index];
 
@@ -333,6 +338,7 @@
 
           const encodedString = encodeURIComponent(
             JSON.stringify({
+              title,
               parentDirectory: `images/trip/${parsed.folderName}/${parsed.subTrip[index].folderName}`,
               totalPhotos: parsed.subTrip[index].photos
             })
@@ -353,7 +359,7 @@
                   <div
                     class="d-flex justify-content-between align-items-center"
                   >
-                    <div class="btn-group">
+                    <div class="col-4 btn-group">
                       <button
                         type="button"
                         class="btn btn-sm btn-outline-secondary"
@@ -361,7 +367,9 @@
                         Lihat
                       </button>
                     </div>
-                    <small class="text-muted">${title}</small>
+                    <div class="col-8">
+                      <small class="text-muted">${title}</small>
+                    </div>
                   </div>
                 </div>
               </div>
